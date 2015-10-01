@@ -26,6 +26,8 @@ function callMe() {
 	function centerCisco(event) {
 	    // alert('HOLY ROTATING SCREENS BATMAN:' + window.orientation + " " + screen.width);
 		var locateY = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)/2 - iObj.getBoundingClientRect().height/2;
+
+		locateY = locateY < 0 ? 0 : locateY;
 		iObj.style.cssText = ";transform: translateY(" + locateY + "px);"
 
 		console.log(locateY, Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
