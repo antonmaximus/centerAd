@@ -23,25 +23,34 @@ iframe {
 
 function callMe() {
 	var iObj = document.querySelector('IFRAME');
+	var body = document.querySelector('body');
 	function centerCisco(event) {
 	    // alert('HOLY ROTATING SCREENS BATMAN:' + window.orientation + " " + screen.width);
 
 
 
 
-		if (supportsOrientationChange == "resize") {
+		if (orientationEvent == "resize") {
 			var locateY = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)/2 - iObj.getBoundingClientRect().height/2;
-			locateY = locateY < 0 ? 0 : locateY;
-			iObj.style.cssText = ";transform: translateY(" + locateY + "px);";
-			console.log(locateY, Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
+
+			if(locateY <= 0) {
+				iObj.style.cssText = ";transform: translateY(" + 0 + "px);";
+				document.body.scrollTop = Math.abs(locateY);
+			} else {
+				iObj.style.cssText = ";transform: translateY(" + locateY + "px);";
+			}
 
 		} else {
 			window.setTimeout(function() {
-				console.log("++++++++++++++ 2222")
+				console.log('333333')
 				var locateY = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)/2 - iObj.getBoundingClientRect().height/2;
-				locateY = locateY < 0 ? 0 : locateY;
-				iObj.style.cssText = ";transform: translateY(" + locateY + "px);";
-				console.log(locateY, Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
+
+				if(locateY <= 0) {
+					iObj.style.cssText = ";transform: translateY(" + 0 + "px);";
+					document.body.scrollTop = Math.abs(locateY);
+				} else {
+					iObj.style.cssText = ";transform: translateY(" + locateY + "px);";
+				}
 			}, 300);
 		}
 
