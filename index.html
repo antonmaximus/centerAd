@@ -37,6 +37,7 @@ function callMe() {
 
 		} else {
 			window.setTimeout(function() {
+				console.log("++++++++++++++ 11111")
 				iObj.style.cssText = ";transform: translateY(" + locateY + "px);";
 				console.log(locateY, Math.max(document.documentElement.clientHeight, window.innerHeight || 0));
 			}, 300);
